@@ -19,7 +19,7 @@ public class Playercontrol : MonoBehaviour
     bool jump;
     bool isJumping;
     bool isGrounded;
-
+    bool doubleJump;
     Rigidbody rb;
 
     private void Awake()
@@ -46,7 +46,7 @@ public class Playercontrol : MonoBehaviour
         rb.velocity = new Vector3(xInput * moveSpeed, rb.velocity.y, 0f);
 
         //flipping the player
-       /* if (xInput < 0 && facingRight)
+        if (xInput < 0 && facingRight)
         {
             flipPlayer();
         }
@@ -63,7 +63,9 @@ public class Playercontrol : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
-       */
+       
+       
+       
 
         isGrounded = Physics.CheckSphere(groundCheck.position, checkRadius, groundLayer);
 
@@ -77,10 +79,10 @@ public class Playercontrol : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, 0f);
             isJumping = false;
+            
         }
+        
     }
-
-  
    
     public void HorizontalInput(float value)
     {
