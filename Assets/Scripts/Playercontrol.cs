@@ -5,6 +5,7 @@ using UnityEngine;
 public class Playercontrol : MonoBehaviour
 {
    
+   //private Animator animator;
     [SerializeField] float moveSpeed = 7f;
     [SerializeField] float jumpForce = 15f;
     [SerializeField] float checkRadius = 0.3f;
@@ -29,6 +30,7 @@ public class Playercontrol : MonoBehaviour
 
     private void Start()
     {
+    // animator = GetComponent<Animator>();
         facingRight = true;
     }
 
@@ -63,7 +65,17 @@ public class Playercontrol : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+       /* if(xInput != 0)
+        {
+            animator.SetBool("IsMoving", true);
+
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+        }
        
+      */
        
        
 
