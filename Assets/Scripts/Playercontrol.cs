@@ -4,8 +4,13 @@ using UnityEngine;
 
 public class Playercontrol : MonoBehaviour
 {
+<<<<<<< HEAD
     //private Animator animator;
     [SerializeField] float gravity = -10f;
+=======
+   
+   //private Animator animator;
+>>>>>>> b7251131602d75e193b7068447552ab6395c3cba
     [SerializeField] float moveSpeed = 7f;
     [SerializeField] float jumpForce = 15f;
     [SerializeField] float checkRadius = 0.3f;
@@ -30,7 +35,11 @@ public class Playercontrol : MonoBehaviour
 
     private void Start()
     {
+<<<<<<< HEAD
        // animator = GetComponent<Animator>();
+=======
+    // animator = GetComponent<Animator>();
+>>>>>>> b7251131602d75e193b7068447552ab6395c3cba
         facingRight = true;
     }
 
@@ -65,10 +74,25 @@ public class Playercontrol : MonoBehaviour
             localScale.x *= -1f;
             transform.localScale = localScale;
         }
+       /* if(xInput != 0)
+        {
+            animator.SetBool("IsMoving", true);
+
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+        }
        
+<<<<<<< HEAD
       /* if(xInput != 0)
         {
             animator.SetBool("IsMoving", true);
+=======
+      */
+       
+       
+>>>>>>> b7251131602d75e193b7068447552ab6395c3cba
 
         }
         else
