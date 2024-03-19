@@ -4,12 +4,13 @@ using UnityEngine;
 
 public class Playercontrol : MonoBehaviour
 {
-   
+    //private Animator animator;
+    [SerializeField] float gravity = -10f;
     [SerializeField] float moveSpeed = 7f;
     [SerializeField] float jumpForce = 15f;
     [SerializeField] float checkRadius = 0.3f;
     [SerializeField] float jumpTime = 0.1f;
-
+    private bool IsJump;
     public LayerMask groundLayer;
     public Transform groundCheck;
 
@@ -29,6 +30,7 @@ public class Playercontrol : MonoBehaviour
 
     private void Start()
     {
+       // animator = GetComponent<Animator>();
         facingRight = true;
     }
 
@@ -64,10 +66,22 @@ public class Playercontrol : MonoBehaviour
             transform.localScale = localScale;
         }
        
-       
-       
+      /* if(xInput != 0)
+        {
+            animator.SetBool("IsMoving", true);
 
+        }
+        else
+        {
+            animator.SetBool("IsMoving", false);
+        }
+       
+      */
         isGrounded = Physics.CheckSphere(groundCheck.position, checkRadius, groundLayer);
+        if(!isGrounded)
+        {
+            rb.velocity += new Vector3(0, gravity * Time.deltaTime, 0);
+        }
 
         if (!isGrounded && isJumping)
         {
@@ -79,8 +93,10 @@ public class Playercontrol : MonoBehaviour
         {
             rb.velocity = new Vector3(rb.velocity.x, jumpForce, 0f);
             isJumping = false;
-            
+          //  animator.SetBool("IsJump", false);
+         //   IsJump = false;
         }
+        
         
     }
    
@@ -89,9 +105,30 @@ public class Playercontrol : MonoBehaviour
         xInput = value;
     }
 
-    public void JumpInput()
+  public void JumpInput()
     {
-        jump = true;
-    }
+        
+        IsJump = true;
+       jump = true;
+      //  Jump();
+       
+   }
+ /*void Jump()
+    {
+        if(isGrounded)
+        {
+            rb.velocity = new Vector3(rb.velocity.x, jumpForce, 0f);
+            isJumping = true;
+            doubleJump = true;
+            
+        }else if(doubleJump)
+        {
+            rb.velocity = new Vector3(rb.velocity.x,jumpForce, 0f);
+            isJumping = true;
+            doubleJump = false;
+        }
+    }  
+ */
+
 
 }

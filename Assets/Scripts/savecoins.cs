@@ -22,8 +22,8 @@ public class savecoins : MonoBehaviour
         coinsScene2 = coinsFromScene1;
 
         coinsText.text = "Coins :" + coinsScene2;
-        highcoinsText.text = "High Coins :" + PlayerPrefs.GetInt("highCoinsScene2");
 
+        highcoinsText.text = "High Coins :" + highcoinsScene2;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,7 +40,7 @@ public class savecoins : MonoBehaviour
             }
             coinsText.text = "Coins :" + coinsScene2;
 
-           
+            highcoinsText.text = "High Coins :" + PlayerPrefs.GetInt("highCoinsScene2");
 
         }
     }
