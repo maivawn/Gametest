@@ -4,13 +4,9 @@ using UnityEngine;
 
 public class Playercontrol : MonoBehaviour
 {
-<<<<<<< HEAD
-    //private Animator animator;
+
     [SerializeField] float gravity = -10f;
-=======
-   
-   //private Animator animator;
->>>>>>> b7251131602d75e193b7068447552ab6395c3cba
+
     [SerializeField] float moveSpeed = 7f;
     [SerializeField] float jumpForce = 15f;
     [SerializeField] float checkRadius = 0.3f;
@@ -28,6 +24,9 @@ public class Playercontrol : MonoBehaviour
     bool doubleJump;
     Rigidbody rb;
 
+
+    [SerializeField] float fallMultiplier;
+
     private void Awake()
     {
         rb = GetComponent<Rigidbody>();
@@ -35,11 +34,7 @@ public class Playercontrol : MonoBehaviour
 
     private void Start()
     {
-<<<<<<< HEAD
-       // animator = GetComponent<Animator>();
-=======
-    // animator = GetComponent<Animator>();
->>>>>>> b7251131602d75e193b7068447552ab6395c3cba
+
         facingRight = true;
     }
 
@@ -83,28 +78,13 @@ public class Playercontrol : MonoBehaviour
         {
             animator.SetBool("IsMoving", false);
         }
-       
-<<<<<<< HEAD
-      /* if(xInput != 0)
-        {
-            animator.SetBool("IsMoving", true);
-=======
-      */
-       
-       
->>>>>>> b7251131602d75e193b7068447552ab6395c3cba
+       */
 
-        }
-        else
-        {
-            animator.SetBool("IsMoving", false);
-        }
-       
-      */
+      
         isGrounded = Physics.CheckSphere(groundCheck.position, checkRadius, groundLayer);
         if(!isGrounded)
         {
-            rb.velocity += new Vector3(0, gravity * Time.deltaTime, 0);
+            rb.velocity -= new Vector3(0, gravity * Time.deltaTime, 0);
         }
 
         if (!isGrounded && isJumping)

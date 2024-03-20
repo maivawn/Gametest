@@ -2259,15 +2259,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28f7f5ca34b27d34a8077b1ac6f17572, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: -9.8
+  gravity: 25
   moveSpeed: 7
-  jumpForce: 7
-  checkRadius: 0.3
-  jumpTime: 0.1
+  jumpForce: 15
+  checkRadius: 0.2
+  jumpTime: 0
   groundLayer:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 457039317}
+  fallMultiplier: 0
 --- !u!1001 &802849216
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4303,6 +4304,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   groundCheck: {fileID: 899123299}
+  fallMultiplier: 0
 --- !u!54 &1690750466
 Rigidbody:
   m_ObjectHideFlags: 0
