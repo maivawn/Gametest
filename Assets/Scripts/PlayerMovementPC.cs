@@ -7,13 +7,14 @@ public class PlayerMovementPC : MonoBehaviour
 {
     public Transform groundCheck;
     public LayerMask ground;
-
+    public float gravity;
+    bool IsGround;
 
     Rigidbody rb;
     [SerializeField] float jumdForce = 5f;
     [SerializeField] float movementSpeed = 6f;
 
-    [SerializeField] AudioSource jumpSound;
+   // [SerializeField] AudioSource jumpSound;
 
     // Start is called before the first frame update
     void Start()
@@ -25,27 +26,31 @@ public class PlayerMovementPC : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        float horizontalInput = Input.GetAxis("Horizontal");
-        float verticalInput = Input.GetAxis("Vertical");
-         rb.velocity = new Vector3 (horizontalInput * movementSpeed , rb.velocity.y, verticalInput *movementSpeed);
-
-        if (Input.GetButtonDown("Jump") && IsGround ())
+        if (Input.GetButtonDown("Jump") && IsGround)
         {
             jump();
         }
-        void jump()
-        {
-            rb.velocity = new Vector3(rb.velocity.x, jumdForce, rb.velocity.z);
-            jumpSound.Play();       
-        }
+        Movemement();
 
-        bool IsGround()
-        {
-            return Physics.CheckSphere(groundCheck.position, .3f, ground);
-
-        }
+        IsGround = Physics.CheckSphere(groundCheck.position, .3f, ground);
 
     }
 
-    
+    public void jump()
+    { 
+        if (!IsGround)
+        {
+            rb.velocity -= new Vector3(0, gravity * Time.deltaTime, 0);
+        }
+
+
+    rb.velocity = new Vector3(rb.velocity.x, jumdForce, rb.velocity.z);
+        //jumpSound.Play();       
+    }
+   public void Movemement()
+    {
+        float horizontalInput = Input.GetAxis("Horizontal");
+        float verticalInput = Input.GetAxis("Vertical");
+        rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
+    }
 }
